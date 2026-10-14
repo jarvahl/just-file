@@ -26,6 +26,8 @@ nix run .#write-files
 nix flake check
 ```
 
+The generated `Justfile` starts with a DO-NOT-EDIT notice and points to `nix run .#write-files` for regeneration.
+
 ## Recipes
 
 String recipes are shorthand for `text`:
@@ -68,6 +70,8 @@ Structured recipes support descriptions, ordered arguments, native Just attribut
 Generated `Justfile`:
 
 ```just
+# DO-NOT-EDIT. This file was auto-generated using github:jarvahl/just-file.
+# Use `nix run .#write-files` to regenerate it.
 # NixOS boot
 boot host=`hostname`:
     nixos-rebuild boot --flake ".#{{host}}"

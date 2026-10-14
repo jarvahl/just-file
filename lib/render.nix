@@ -91,10 +91,16 @@ rec {
 
   renderJustfile =
     recipes:
-    recipes
-    |> lib.mapAttrsToList (
-      name: recipe:
-      if recipe.runtimeInputs == null then renderRecipe name recipe else renderNixRunRecipe name recipe
+    [
+      "# DO-NOT-EDIT. This file was auto-generated using github:jarvahl/just-file."
+      "# Use `nix run .#write-files` to regenerate it."
+    ]
+    ++ (
+      recipes
+      |> lib.mapAttrsToList (
+        name: recipe:
+        if recipe.runtimeInputs == null then renderRecipe name recipe else renderNixRunRecipe name recipe
+      )
     )
     |> concatLines;
 }

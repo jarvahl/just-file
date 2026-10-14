@@ -3,6 +3,7 @@ let
   cfg = config.just;
   render = import ../render.nix { inherit lib; };
   runtimeRecipes = lib.filterAttrs (_: recipe: recipe.runtimeInputs != null) cfg.recipes;
+  justfileText = render.renderJustfile cfg.recipes;
 in
 {
   perSystem =
@@ -31,7 +32,7 @@ in
       ) runtimeRecipes;
 
       files = {
-        file."Justfile".text = render.renderJustfile cfg.recipes;
+        file."Justfile".text = justfileText;
         writer.app = true;
       };
     };

@@ -96,7 +96,7 @@ rec {
       "# Use `nix run .#write-files` to regenerate it."
       ""
     ]
-    ++ (
+    ++ lib.intersperse "" (
       recipes
       |> lib.mapAttrsToList (
         name: recipe:

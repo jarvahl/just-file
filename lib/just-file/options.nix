@@ -47,7 +47,7 @@ let
   };
 in
 {
-  options.justFile.recipes = lib.mkOption {
+  options.just-file.recipes = lib.mkOption {
     default = { };
     type = lib.types.attrsOf (lib.types.coercedTo lib.types.str (text: { inherit text; }) recipeType);
   };

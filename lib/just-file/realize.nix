@@ -1,6 +1,6 @@
 { lib, config, ... }:
 let
-  cfg = config.justFile;
+  cfg = config.just-file;
   render = import ../render.nix { inherit lib; };
   runtimeRecipes = lib.filterAttrs (_: recipe: recipe.runtimeInputs != null) cfg.recipes;
   justfileText = render.renderJustfile cfg.recipes;

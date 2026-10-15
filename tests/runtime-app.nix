@@ -1,6 +1,6 @@
 { ... }:
 {
-  justFile.recipes.capture = {
+  just-file.recipes.capture = {
     description = "Capture one argument";
     args = [ { name = "value"; } ];
     runtimeInputs = { pkgs }: [ pkgs.coreutils ];

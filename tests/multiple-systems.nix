@@ -1,6 +1,6 @@
 { ... }:
 {
-  justFile.recipes.tool = {
+  just-file.recipes.tool = {
     runtimeInputs = { pkgs }: [ pkgs.coreutils ];
     text = "printf ok";
   };

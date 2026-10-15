@@ -1,6 +1,6 @@
 { ... }:
 {
-  justFile.recipes.build = {
+  just-file.recipes.build = {
     description = "Build configuration";
     args = [
       {

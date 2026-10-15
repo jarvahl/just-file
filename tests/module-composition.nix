@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  justFile.recipes = lib.mkMerge [
+  just-file.recipes = lib.mkMerge [
     {
       check = lib.mkDefault "echo default";
       format = "echo format";

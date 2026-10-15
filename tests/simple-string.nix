@@ -1,6 +1,6 @@
 { ... }:
 {
-  justFile.recipes.check = "nix flake check";
+  just-file.recipes.check = "nix flake check";
 
   perSystem = { config, pkgs, ... }: {
     packages.default = pkgs.writeShellApplication {

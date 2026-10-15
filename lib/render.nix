@@ -2,6 +2,10 @@
 let
   concatLines = lib.concatStringsSep "\n";
 
+  trimTrailingNewlines =
+    text:
+    if lib.hasSuffix "\n" text then trimTrailingNewlines (lib.removeSuffix "\n" text) else text;
+
   indentBody =
     text:
     text
@@ -67,13 +71,15 @@ rec {
       }:";
       body = indentBody recipe.text;
     in
-    concatLines (
-      lib.filter (line: line != "") [
-        description
-        attrs
-        signature
-        body
-      ]
+    trimTrailingNewlines (
+      concatLines (
+        lib.filter (line: line != "") [
+          description
+          attrs
+          signature
+          body
+        ]
+      )
     );
 
   renderNixRunRecipe =

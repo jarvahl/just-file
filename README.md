@@ -2,7 +2,7 @@
 
 Generate a real `Justfile` from Nix.
 
-`just-file` is a small flake-parts module. It exposes top-level `just.recipes`, renders Just syntax, and uses `mightyiam/files` to write and check a Git-trackable `Justfile`.
+`just-file` is a small flake-parts module. It exposes top-level `justFile.recipes`, renders Just syntax, and uses `mightyiam/files` to write and check a Git-trackable `Justfile`.
 
 ## Use
 
@@ -14,7 +14,7 @@ Generate a real `Justfile` from Nix.
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [ inputs.just-file.flakeModules.default ];
 
-      just.recipes.check = "nix flake check";
+      justFile.recipes.check = "nix flake check";
     };
 }
 ```
@@ -34,7 +34,7 @@ String recipes are shorthand for `text`:
 
 ```nix
 {
-  just.recipes.check = "nix flake check";
+  justFile.recipes.check = "nix flake check";
 }
 ```
 
@@ -43,7 +43,7 @@ Structured recipes support descriptions, ordered arguments, native Just attribut
 ```nix
 { lib, ... }:
 {
-  just.recipes =
+  justFile.recipes =
     (lib.genAttrs [ "build" "switch" "boot" ] (action: {
       description = "NixOS ${action}";
       args = [
@@ -96,7 +96,7 @@ Arguments are ordered by list position:
 
 ```nix
 {
-  just.recipes.deploy = {
+  justFile.recipes.deploy = {
     args = [
       { name = "target"; }
       {
@@ -117,7 +117,7 @@ Native Just recipe attributes are declared as an attrset:
 
 ```nix
 {
-  just.recipes.deploy = {
+  justFile.recipes.deploy = {
     description = "Deploy configuration";
     args = [ { name = "target"; } ];
     attributes = {
@@ -150,7 +150,7 @@ The generated `Justfile` invokes that app through `nix run`, so no Nix store pat
 
 ```nix
 {
-  just.recipes.format = {
+  justFile.recipes.format = {
     description = "Format Nix files";
     runtimeInputs = { pkgs }: [ pkgs.nixfmt ];
     text = ''
@@ -172,7 +172,7 @@ Arguments are forwarded with Just's `quote()` function to preserve shell argumen
 
 ```nix
 {
-  just.recipes.capture = {
+  justFile.recipes.capture = {
     args = [ { name = "value"; } ];
     runtimeInputs = { pkgs }: [ pkgs.coreutils ];
     text = ''
@@ -198,7 +198,7 @@ This preserves the behavior of the `build`, `switch`, `boot`, and `default` reci
 ```nix
 { lib, ... }:
 {
-  just.recipes =
+  justFile.recipes =
     lib.genAttrs [ "build" "switch" "boot" ] (action: {
       description =
         {

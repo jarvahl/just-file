@@ -1,6 +1,6 @@
 { ... }:
 {
-  just.recipes.format = {
+  justFile.recipes.format = {
     runtimeInputs = { pkgs }: [ pkgs.coreutils ];
     text = "true";
   };

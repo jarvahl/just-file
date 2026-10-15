@@ -3,8 +3,7 @@ let
   concatLines = lib.concatStringsSep "\n";
 
   trimTrailingNewlines =
-    text:
-    if lib.hasSuffix "\n" text then trimTrailingNewlines (lib.removeSuffix "\n" text) else text;
+    text: if lib.hasSuffix "\n" text then trimTrailingNewlines (lib.removeSuffix "\n" text) else text;
 
   indentBody =
     text:

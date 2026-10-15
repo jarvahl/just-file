@@ -1,6 +1,6 @@
 { ... }:
 {
-  just.recipes = {
+  justFile.recipes = {
     zebra = "echo z";
     alpha = "echo a";
     middle = "echo m";

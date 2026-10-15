@@ -1,6 +1,6 @@
 { ... }:
 {
-  just.recipes.deploy = {
+  justFile.recipes.deploy = {
     description = "Deploy configuration";
     args = [ { name = "target"; } ];
     attributes = {

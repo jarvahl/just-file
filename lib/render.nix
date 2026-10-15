@@ -94,6 +94,7 @@ rec {
     [
       "# DO-NOT-EDIT. This file was auto-generated using github:jarvahl/just-file."
       "# Use `nix run .#write-files` to regenerate it."
+      ""
     ]
     ++ (
       recipes
